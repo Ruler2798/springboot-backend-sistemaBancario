@@ -1,6 +1,6 @@
-package org.luishernandez.WebApp.repository;
+package org.luishernandez.webApp.repository;
 
-import org.luishernandez.WebApp.model.Cliente;
+import org.luishernandez.webApp.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,7 +1,7 @@
-package org.luishernandez.WebApp.controller;
+package org.luishernandez.webApp.controller;
 
-import org.luishernandez.WebApp.model.Cliente;
-import org.luishernandez.WebApp.service.ClienteService;
+import org.luishernandez.webApp.model.Cliente;
+import org.luishernandez.webApp.service.ClienteService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,3 +50,4 @@ public class ClienteController {
         return ResponseEntity.noContent().build();
     }
 }
+

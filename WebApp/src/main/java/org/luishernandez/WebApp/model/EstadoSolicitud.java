@@ -1,4 +1,4 @@
-package org.luishernandez.WebApp.model;
+package org.luishernandez.webApp.model;
 
 public enum EstadoSolicitud {
     PENDIENTE,

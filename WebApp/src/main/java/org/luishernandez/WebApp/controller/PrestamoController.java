@@ -1,7 +1,7 @@
-package org.luishernandez.WebApp.controller;
+package org.luishernandez.webApp.controller;
 
-import org.luishernandez.WebApp.model.Prestamo;
-import org.luishernandez.WebApp.service.PrestamoService;
+import org.luishernandez.webApp.model.Prestamo;
+import org.luishernandez.webApp.service.PrestamoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,3 +26,4 @@ public class PrestamoController {
         return service.buscarPorId(id);
     }
 }
+

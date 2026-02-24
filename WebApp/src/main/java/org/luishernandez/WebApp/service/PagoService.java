@@ -1,9 +1,10 @@
-package org.luishernandez.WebApp.service;
+package org.luishernandez.webApp.service;
 
-import org.luishernandez.WebApp.model.Pago;
-import org.luishernandez.WebApp.model.Prestamo;
-import org.luishernandez.WebApp.repository.PagoRepository;
+import org.luishernandez.webApp.model.Pago;
+import org.luishernandez.webApp.repository.PagoRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PagoService {
@@ -14,7 +15,12 @@ public class PagoService {
         this.pagoRepository = pagoRepository;
     }
 
-    public Pago registrarPago(Pago pago) {
+    public List<Pago> listar() {
+        return pagoRepository.findAll();
+    }
+
+    public Pago guardar(Pago pago) {
         return pagoRepository.save(pago);
     }
 }
+

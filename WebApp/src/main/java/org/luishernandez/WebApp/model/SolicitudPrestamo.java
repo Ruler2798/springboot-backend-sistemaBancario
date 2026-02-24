@@ -1,4 +1,4 @@
-package org.luishernandez.WebApp.model;
+package org.luishernandez.webApp.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
@@ -40,8 +40,6 @@ public class SolicitudPrestamo {
     protected void onCreate() {
         this.fechaSolicitud = LocalDate.now();
     }
-
-    // getters y setters
 
     public Long getId() {
         return id;

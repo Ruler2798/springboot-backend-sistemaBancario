@@ -1,4 +1,4 @@
-package org.luishernandez.WebApp.model;
+package org.luishernandez.webApp.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
@@ -31,8 +31,6 @@ public class Cliente {
     protected void onCreate() {
         this.fechaRegistro = LocalDate.now();
     }
-
-    // getters y setters
 
     public Long getId() {
         return id;

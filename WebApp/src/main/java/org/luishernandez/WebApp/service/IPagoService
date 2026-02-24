@@ -1,8 +1,0 @@
-package org.luishernandez.WebApp.service;
-
-import org.luishernandez.WebApp.model.Pago;
-
-public interface PagoService {
-
-    Pago registrarPago(Pago pago);
-}

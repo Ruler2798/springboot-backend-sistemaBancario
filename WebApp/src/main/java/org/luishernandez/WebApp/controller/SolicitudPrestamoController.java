@@ -1,11 +1,12 @@
-package org.luishernandez.WebApp.controller;
+package org.luishernandez.webApp.controller;
 
-import org.luishernandez.WebApp.model.SolicitudPrestamo;
-import org.luishernandez.WebApp.service.SolicitudPrestamoService;
+import org.luishernandez.webApp.model.SolicitudPrestamo;
+import org.luishernandez.webApp.service.SolicitudPrestamoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/solicitudes")
@@ -24,7 +25,8 @@ public class SolicitudPrestamoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<SolicitudPrestamo> obtener(@PathVariable Long id) {
-        return service.buscarPorId(id)
+        Optional<SolicitudPrestamo> solicitud = service.buscarPorId(id);
+        return solicitud
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -44,3 +46,4 @@ public class SolicitudPrestamoController {
         return ResponseEntity.ok(service.rechazar(id));
     }
 }
+

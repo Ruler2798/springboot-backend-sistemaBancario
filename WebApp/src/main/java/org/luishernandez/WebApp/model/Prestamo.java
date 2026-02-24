@@ -1,4 +1,4 @@
-package org.luishernandez.WebApp.model;
+package org.luishernandez.webApp.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
@@ -36,12 +36,23 @@ public class Prestamo {
         // requerido por JPA
     }
 
+    public Prestamo(Cliente cliente,
+                    BigDecimal monto,
+                    Integer plazoMeses,
+                    BigDecimal tasaInteres,
+                    SolicitudPrestamo solicitud) {
+        this.cliente = cliente;
+        this.monto = monto;
+        this.plazoMeses = plazoMeses;
+        this.tasaInteres = tasaInteres;
+        this.solicitud = solicitud;
+        this.fechaInicio = LocalDate.now();
+    }
+
     @PrePersist
     protected void onCreate() {
         this.fechaInicio = LocalDate.now();
     }
-
-    // getters y setters
 
     public Long getId() {
         return id;

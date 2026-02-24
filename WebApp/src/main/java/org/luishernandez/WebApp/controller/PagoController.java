@@ -1,7 +1,7 @@
-package org.luishernandez.WebApp.controller;
+package org.luishernandez.webApp.controller;
 
-import org.luishernandez.WebApp.model.Pago;
-import org.luishernandez.WebApp.service.PagoService;
+import org.luishernandez.webApp.model.Pago;
+import org.luishernandez.webApp.service.PagoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,3 +26,4 @@ public class PagoController {
         return service.guardar(pago);
     }
 }
+
