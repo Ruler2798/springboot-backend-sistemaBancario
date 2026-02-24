@@ -1,0 +1,13 @@
+package org.luishernandez.WebApp.repository;
+
+import org.luishernandez.WebApp.model.SolicitudPrestamo;
+import org.luishernandez.WebApp.model.EstadoSolicitud;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface SolicitudPrestamoRepository
+        extends JpaRepository<SolicitudPrestamo, Long> {
+
+    List<SolicitudPrestamo> findByEstado(EstadoSolicitud estado);
+}

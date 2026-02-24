@@ -1,0 +1,14 @@
+package org.luishernandez.WebApp.service;
+
+import org.luishernandez.WebApp.model.Cliente;
+
+import java.util.List;
+
+public interface IClienteService {
+
+Cliente guardar(Cliente cliente);
+
+    List<Cliente> listarTodos();
+
+    Cliente buscarPorId(Long id);
+}

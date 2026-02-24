@@ -1,0 +1,20 @@
+package org.luishernandez.WebApp.service;
+
+import org.luishernandez.WebApp.model.Pago;
+import org.luishernandez.WebApp.model.Prestamo;
+import org.luishernandez.WebApp.repository.PagoRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+public class PagoService {
+
+    private final PagoRepository pagoRepository;
+
+    public PagoService(PagoRepository pagoRepository) {
+        this.pagoRepository = pagoRepository;
+    }
+
+    public Pago registrarPago(Pago pago) {
+        return pagoRepository.save(pago);
+    }
+}
