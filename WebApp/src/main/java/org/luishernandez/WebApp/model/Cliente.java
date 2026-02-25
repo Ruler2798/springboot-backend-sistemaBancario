@@ -32,6 +32,9 @@ public class Cliente {
     @Column(nullable = false, length = 20)
     private String telefono;
 
+    @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 1")
+    private Boolean activo = true;
+
     protected Cliente() {
         // Constructor requerido por JPA
     }
@@ -39,6 +42,9 @@ public class Cliente {
     @PrePersist
     protected void onCreate() {
         this.fechaRegistro = LocalDate.now();
+        if (this.activo == null) {
+            this.activo = true;
+        }
     }
 
     public Long getId() {
@@ -95,5 +101,13 @@ public String getTelefono() {
 
 public void setTelefono(String telefono) {
     this.telefono = telefono;
+}
+
+public Boolean getActivo() {
+    return activo;
+}
+
+public void setActivo(Boolean activo) {
+    this.activo = activo;
 }
 }

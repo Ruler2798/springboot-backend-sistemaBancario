@@ -18,15 +18,18 @@ public class ClienteService {
     }
 
     public Cliente guardar(Cliente cliente) {
+        if (cliente.getId() == null && cliente.getActivo() == null) {
+            cliente.setActivo(true);
+        }
         return clienteRepository.save(cliente);
     }
 
     public List<Cliente> listar() {
-        return clienteRepository.findAll();
+        return clienteRepository.findByActivoTrue();
     }
 
     public Optional<Cliente> buscarPorId(Long id) {
-        return clienteRepository.findById(id);
+        return clienteRepository.findByIdAndActivoTrue(id);
     }
 
     public Cliente actualizar(Long id, Cliente datosActualizados) {
@@ -44,9 +47,10 @@ public class ClienteService {
 }
 
     public void eliminar(Long id) {
-        if (!clienteRepository.existsById(id)) {
-            throw new ResourceNotFoundException("Cliente no encontrado");
-        }
-        clienteRepository.deleteById(id);
+        Cliente cliente = clienteRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
+        
+        cliente.setActivo(false);
+        clienteRepository.save(cliente);
     }
 }
