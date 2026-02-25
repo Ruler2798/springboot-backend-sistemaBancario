@@ -1,5 +1,6 @@
 package org.luishernandez.webApp.service;
 
+import org.luishernandez.webApp.exception.ResourceNotFoundException;
 import org.luishernandez.webApp.model.Cliente;
 import org.luishernandez.webApp.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class ClienteService {
         return clienteRepository.findById(id);
     }
 
-  public Cliente actualizar(Long id, Cliente datosActualizados) {
+    public Cliente actualizar(Long id, Cliente datosActualizados) {
 
     Cliente existente = clienteRepository.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
@@ -44,9 +45,8 @@ public class ClienteService {
 
     public void eliminar(Long id) {
         if (!clienteRepository.existsById(id)) {
-            throw new RuntimeException("Cliente no encontrado");
+            throw new ResourceNotFoundException("Cliente no encontrado");
         }
         clienteRepository.deleteById(id);
     }
 }
-
