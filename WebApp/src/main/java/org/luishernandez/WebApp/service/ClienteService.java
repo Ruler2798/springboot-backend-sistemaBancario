@@ -28,16 +28,19 @@ public class ClienteService {
         return clienteRepository.findById(id);
     }
 
-    public Cliente actualizar(Long id, Cliente datosActualizados) {
-        Cliente existente = clienteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+  public Cliente actualizar(Long id, Cliente datosActualizados) {
 
-        existente.setNombre(datosActualizados.getNombre());
-        existente.setApellido(datosActualizados.getApellido());
-        existente.setIdentificacion(datosActualizados.getIdentificacion());
+    Cliente existente = clienteRepository.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Cliente no encontrado"));
 
-        return clienteRepository.save(existente);
-    }
+    existente.setNombre(datosActualizados.getNombre());
+    existente.setApellido(datosActualizados.getApellido());
+    existente.setIdentificacion(datosActualizados.getIdentificacion());
+    existente.setTelefono(datosActualizados.getTelefono());  
+    existente.setCorreo(datosActualizados.getCorreo());   
+
+    return clienteRepository.save(existente);
+}
 
     public void eliminar(Long id) {
         if (!clienteRepository.existsById(id)) {

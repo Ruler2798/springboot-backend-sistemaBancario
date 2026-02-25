@@ -3,6 +3,9 @@ package org.luishernandez.webApp.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "clientes")
 public class Cliente {
@@ -22,6 +25,12 @@ public class Cliente {
 
     @Column(name = "fecha_registro", nullable = false)
     private LocalDate fechaRegistro;
+
+    @Column(nullable = true, length = 150)
+    private String correo;
+
+    @Column(nullable = false, length = 20)
+    private String telefono;
 
     protected Cliente() {
         // Constructor requerido por JPA
@@ -71,4 +80,20 @@ public class Cliente {
     public void setFechaRegistro(LocalDate fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
+
+    public String getCorreo() {
+    return correo;
+}
+
+public void setCorreo(String correo) {
+    this.correo = correo;
+}
+
+public String getTelefono() {
+    return telefono;
+}
+
+public void setTelefono(String telefono) {
+    this.telefono = telefono;
+}
 }

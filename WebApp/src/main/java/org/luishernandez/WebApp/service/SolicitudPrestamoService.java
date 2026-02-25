@@ -40,10 +40,16 @@ public class SolicitudPrestamoService {
         return solicitudRepo.save(solicitud);
     }
 
-    @Transactional
+@Transactional
     public SolicitudPrestamo aprobar(Long solicitudId) {
+
         SolicitudPrestamo solicitud = solicitudRepo.findById(solicitudId)
                 .orElseThrow(() -> new RuntimeException("Solicitud no encontrada"));
+
+        
+        if (solicitud.getEstado() != EstadoSolicitud.PENDIENTE) {
+            throw new RuntimeException("La solicitud ya fue procesada");
+        }
 
         solicitud.setEstado(EstadoSolicitud.APROBADA);
 
@@ -56,6 +62,7 @@ public class SolicitudPrestamoService {
         );
 
         prestamoRepo.save(prestamo);
+
         return solicitudRepo.save(solicitud);
     }
 

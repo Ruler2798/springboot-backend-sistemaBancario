@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "prestamos")
 public class Prestamo {
@@ -28,12 +31,11 @@ public class Prestamo {
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "solicitud_id", nullable = false, unique = true)
     private SolicitudPrestamo solicitud;
 
     protected Prestamo() {
-        // requerido por JPA
     }
 
     public Prestamo(Cliente cliente,
